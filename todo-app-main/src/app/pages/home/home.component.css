@@ -1,0 +1,68 @@
+section {
+    margin-top: 70px;
+    padding: 0 26px;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+button {
+    width: 23px;
+    height: 23px;
+    border-radius: 50px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2px;
+}
+
+li {
+    display: flex;
+    margin-bottom: 23px;
+    gap: 15px;
+}
+
+p {
+    margin: 30px;
+}
+
+.empty-home {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-checkbox:hover {
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.empty-checkbox:hover>.feather {
+    transition: all 0.2s;
+    color: white;
+}
+
+.feather {
+    width: 24px;
+    color: var(--darkblue);
+    transition: all 0.2s;
+}
+
+/* ANIMATION */
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-animation {
+    display: block;
+    /* Change display inline to block */
+    animation: fade 0.3s;
+}

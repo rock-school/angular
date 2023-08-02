@@ -1,0 +1,46 @@
+<section>
+
+    <app-filter (changeCategory)="filterCategories($event)"></app-filter>
+
+<div class="fade-animation" *ngIf="todoList.length > 0; else emptyToDoList">
+
+    <!-- Tâches urgentes -->
+    <p *ngIf="this.urgentTaskExists">⚠️ Tâches urgentes</p>
+    <ul>
+        <ng-container *ngFor="let task of todoList">
+            <li *ngIf="task.isUrgent">
+                <button class="empty-checkbox" (click)="setTaskAsDone(task)"><svg class="feather feather-check" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button>
+                <a routerLink="/update-task/{{task.id}}">
+                    {{task.category! | categoryEmoji}}
+                    {{task.content}}
+                </a>
+            </li>
+        </ng-container>
+    </ul>
+
+    <!-- Tâches non-urgentes -->
+    <p *ngIf="this.nonUrgentTaskExists">🌸 Autres tâches</p>
+    <ul>
+        <ng-container *ngFor="let task of todoList">
+            <li *ngIf="!task.isUrgent">
+                <button class="empty-checkbox" (click)="setTaskAsDone(task)"><svg class="feather feather-check" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button>
+                <a routerLink="/update-task/{{task.id}}">
+                    {{task.category! | categoryEmoji}}
+                    {{task.content}}
+                </a>
+            </li>
+        </ng-container>
+    </ul>
+
+</div>
+
+<ng-template #emptyToDoList >
+
+    <div class="empty-home">
+        <p>Aucune tâche pour le moment 🙌</p>
+        <a class="blue-button" routerLink="/new-task">Créer une tâche</a>
+    </div>
+
+</ng-template>
+
+</section>

@@ -1,0 +1,5 @@
+<section>
+<app-task-form [currentTask]="currentTask" (updateTask)="updateTask($event)"></app-task-form>
+
+<button class="blue-button" [disabled]="!isFormCompleted" (click)="validateTask()" type="submit">Valider ma tâche</button>
+</section>
