@@ -33,6 +33,8 @@ Angular Modules -
 - Widget	- Один component, directive, or pipe доступные в других модулях
 - Shared	- Делает набор components, directives, and pipes доступные в других модулях
 
+Example:
+![img_17.png](img_17.png)
 
 ## NgModule 
 
@@ -65,3 +67,4 @@ export class AppModule { }
 Все ангулярные пакеты - это отдельные модули!
 
 ![img_12.png](img_12.png)
+
