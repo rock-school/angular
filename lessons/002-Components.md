@@ -19,7 +19,7 @@ export class TodoComponent {
 ```
 
 
-# Data binding
+# Binding
 
 ## one-way data binding
 
@@ -27,11 +27,78 @@ export class TodoComponent {
 (click) event binding
 {{hero.name}} interpolation
 
-## two-way data binding 
-[(ngModel)]="hero.name"
+## Binding to a property
 
+```html
+<img alt="item" [src]="itemImageUrl">
+<tr><td [colSpan]="1 + 1">Three-Four</td></tr>
+<button type="button" [disabled]="isUnchanged">Disabled Button</button>
+```
+
+```typescript
+class Component {
+    itemImageUrl = '../assets/phone.svg';
+}
+```
+
+## Attribute binding
+```html
+<!-- create and set an aria attribute for assistive technology -->
+<button type="button" [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+<tr><td [attr.colspan]="1 + 1">One-Two</td></tr>
+```
+
+## Class and Style Bunding 
+
+| BINDING  TYPE | SYNTAX | INPUT TYPE                                 | EXAMPLE INPUT VALUES |
+| -------- | ------- |--------------------------------------------|-------------|
+| Single class binding  | [class.sale]="onSale" | boolean & undefined & null                 | true, false |
+| Multi-class binding | [class]="classExpression"  | string                                     |  "my-class-1 my-class-2 my-class-3" |
+| Multi-class binding    | [class]="classExpression"    | Record<string, boolean & undefined & null> | {foo: true, bar: false} |
+ | Multi-class binding | [class]="classExpression" | Array<string> | ['foo', 'bar'] |
+
+```html
+<nav [style.background-color]="expression"></nav>
+```
+
+| BINDING TYPE	                                                        | SYNTAX	                                           | INPUT TYPE                                                | EXAMPLE INPUT VALUES |
+|----------------------------------------------------------------------|---------------------------------------------------|-----------------------------------------------------------| --- |
+| Single style binding	                                                | [style.width]="width"	                            | string & undefined & null                                 |	"100px"
+| Single style binding with units                                      | 	[style.width.px]="width"	                        | number                    & undefined & null	             | 100
+| Multi-style binding	                                                 | [style]="styleExpression"	                        | string                                                    |	"width: 100px; height: 100px"
+| Multi-style binding | 	[style]="styleExpression" | 	Record<string, string                        & undefined & null> |	{width: '100px', height: '100px'}
+
+## two-way data binding 
+
+```html
+[(ngModel)]="hero.name"
+<app-sizer [(size)]="fontSizePx"></app-sizer>
+```
 ![img_1.png](img_1.png)
 
+
+```typescript
+export class SizerComponent {
+
+  @Input()  size!: number | string;
+  @Output() sizeChange = new EventEmitter<number>();
+
+  dec() { this.resize(-1); }
+  inc() { this.resize(+1); }
+
+  resize(delta: number) {
+    this.size = Math.min(40, Math.max(8, +this.size + delta));
+    this.sizeChange.emit(this.size);
+  }
+}
+```
+```html
+<div>
+  <button type="button" (click)="dec()" title="smaller">-</button>
+  <button type="button" (click)="inc()" title="bigger">+</button>
+  <span [style.font-size.px]="size">FontSize: {{size}}px</span>
+</div>
+```
 # Events 
 
 ## Input 
@@ -232,14 +299,37 @@ export class ZippyMultislotComponent {}
 </app-zippy-multislot>
 ````
 
-## Conditional
-TODO:
-
 # Dynamic Components 
-TODO:
+
+https://angular.io/guide/dynamic-component-loader
 
 # Tempalates 
-TODO:
 
-# Binding 
-TODO:
+```html
+<ng-template [ngIf]="lessons" [ngIfElse]="loading">
+   <div class="lessons-list">
+     ... 
+   </div>
+</ng-template>
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="loading"></ng-container>
+
+<!-- Define our template -->
+<ng-template #myTemplate let-option let-position="idx">
+    World!
+    {{ position }} : {{option}}
+</ng-template>
+
+
+<!-- Render the template in this outlet -->
+<ng-container
+        [ngTemplateOutlet]="myTemplate"
+        [ngTemplateOutletContext]="{ $implicit: option, idx: i }"
+></ng-container>
+
+```
+
