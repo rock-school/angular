@@ -48,7 +48,7 @@ this.router.navigateByUrl('');
 
 # LifeCycle router
 
-// FROM VIDEO 
+![img_18.png](img_18.png)
 
 # Examples 
 
