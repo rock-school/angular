@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TaskCreationComponent } from './pages/task-creation/task-creation.component';
 import { TaskModificationComponent } from './pages/task-modification/task-modification.component';
+import {ReactiveFormsComponent} from "./components/reactive-forms/reactive-forms.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "update-task/:id", component: TaskModificationComponent},
   { path: "history", component: HistoryComponent},
   { path: "not-found", component: NotFoundComponent},
+  { path: "reactive-forms", component: ReactiveFormsComponent },
   { path:"**", redirectTo: "not-found"}
 ];
 

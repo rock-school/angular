@@ -2,7 +2,6 @@ header {
     display: flex;
     border-bottom: 1px white solid;
     background-color: var(--darkblue);
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 3;

@@ -1,32 +1,3 @@
-<!--<app-header></app-header>-->
-<form [formGroup]="profileForm2" (ngSubmit)="onSubmit()">
-
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName">
-
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName">
-
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email">
-
-  <div formArrayName="aliases">
-    <h2>Aliases</h2>
-    <button type="button" (click)="addAlias()">+ Add another alias</button>
-
-    <div *ngFor="let alias of aliases.controls; let i=index">
-      <!-- The repeated alias template -->
-      <label for="alias-{{ i }}">Alias:</label>
-      <input id="alias-{{ i }}" type="text" [formControlName]="i">
-    </div>
-  </div>
-  <p>Complete the form to enable button.</p>
-  {{ profileForm2.valid }}
-  {{ profileForm2.invalid }}
-  {{ profileForm2.errors | json }}
-  <p>Email errors: {{ profileForm2.controls.email.errors | json }}</p>
-  <button type="submit" [disabled]="!profileForm2.valid">Submit</button>
-</form>
-<button type="button" (click)="chnageLastName()">Chnage Last Name</button>
+<app-header></app-header>
 <router-outlet></router-outlet>
 <app-navbar class="navbar"></app-navbar>

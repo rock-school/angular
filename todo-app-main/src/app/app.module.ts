@@ -15,6 +15,7 @@ import { TaskModificationComponent } from './pages/task-modification/task-modifi
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { CategoryEmojiPipe } from './pipes/category-emoji.pipe';
 import { FilterComponent } from './components/filter/filter.component';
+import { ReactiveFormsComponent } from './components/reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FilterComponent } from './components/filter/filter.component';
     TaskFormComponent,
     CategoryEmojiPipe,
     FilterComponent,
+    ReactiveFormsComponent,
 
   ],
   imports: [
