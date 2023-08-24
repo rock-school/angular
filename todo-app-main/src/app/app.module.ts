@@ -10,7 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TaskCreationComponent } from './pages/task-creation/task-creation.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskModificationComponent } from './pages/task-modification/task-modification.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { CategoryEmojiPipe } from './pipes/category-emoji.pipe';
@@ -28,12 +28,14 @@ import { FilterComponent } from './components/filter/filter.component';
     TaskModificationComponent,
     TaskFormComponent,
     CategoryEmojiPipe,
-    FilterComponent
+    FilterComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
