@@ -11,6 +11,8 @@ Pipe — это простые функции, которые можно исп�
 - DecimalPipe: Transforms a number into a string with a decimal point, formatted according to locale rules.
 - PercentPipe: Transforms a number to a percentage string, formatted according to locale rules.
 - AsyncPipe 
+- JsonPipe 
+- SlicePipe
 
 ![img_33.png](img_33.png)
 ![img_34.png](img_34.png)
@@ -18,6 +20,32 @@ Pipe — это простые функции, которые можно исп�
 ## Custom Pipe
 
 ![img_35.png](img_35.png)
+
+```typescript
+@Pipe({
+  name: 'nickname',
+})
+export class NicknamePipe implements PipeTransform {
+  constructor(private userService: UserService) {}
+
+  transform(username: string | undefined, ownName = 'You', userUid?: string): string | undefined {
+    if (
+      (username === this.userService.user.username && this.userService.user.username && ownName) ||
+      (userUid && this.userService.user.id === userUid)
+    ) {
+      return ownName;
+    }
+    if (username === 'Admin') {
+      return 'World';
+    }
+    if (username) {
+      return username.includes('User_') ? 'Anonymous' : username;
+    }
+    return 'World';
+  }
+}
+
+```
 
 ## PurePipe
 

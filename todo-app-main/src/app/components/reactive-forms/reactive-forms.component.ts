@@ -1,8 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, Pipe, PipeTransform} from '@angular/core';
 import {environment} from "../../../environments/environments";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppValidators} from "../../services/app-validators";
 import {TaskService} from "../../services/task/task.service";
+
+@Pipe({
+  name: 'nickname',
+})
+export class NicknamePipe implements PipeTransform {
+  constructor() {}
+
+  transform(username: any): string | undefined {
+    console.log('running pipe')
+    return username + '321';
+  }
+}
 
 @Component({
   selector: 'app-reactive-forms',
@@ -10,6 +22,9 @@ import {TaskService} from "../../services/task/task.service";
   styleUrls: ['./reactive-forms.component.css']
 })
 export class ReactiveFormsComponent {
+  examplePipe = {
+     nickname: 'test'
+  }
   title = environment.title;
   profileForm = new FormGroup({
     firstName: new FormControl('', [Validators.required], []),
@@ -48,6 +63,7 @@ export class ReactiveFormsComponent {
   }
 
   addAlias() {
+    this.examplePipe.nickname = 'test-test';
     this.aliases.push(this.fb.control(''));
   }
 

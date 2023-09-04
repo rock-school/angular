@@ -1,5 +1,6 @@
 <form [formGroup]="profileForm2" (ngSubmit)="onSubmit()">
 
+  {{ examplePipe.nickname | nickname }}
   <label for="first-name">First Name: </label>
   <input id="first-name" type="text" formControlName="firstName">
 
