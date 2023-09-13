@@ -42,8 +42,8 @@ https://rxviz.com/examples/basic-interval
 ![img_60.png](img_60.png)
 
 - Subject
-- BehaviorSubject
-- AsyncSubject
+- BehaviorSubject - https://www.learnrxjs.io/learn-rxjs/subjects/behaviorsubject
+- AsyncSubject - https://www.learnrxjs.io/learn-rxjs/subjects/asyncsubject
 
 ![img_61.png](img_61.png)
 
